@@ -9,9 +9,8 @@ export const PlanetProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Loading & Error
   useEffect(() => {
-    fetch("http://localhost:5173/public/data.json")
+    fetch("./data.json")
       .then((response) => response.json())
       .then((data) => {
         setPlanetData(data);

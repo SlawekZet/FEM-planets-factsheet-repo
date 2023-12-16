@@ -70,7 +70,7 @@ html {
 body {
   max-width: 100%;
   margin: 0 auto;
-  background: url(./background-stars.svg);
+  background: url(../public/background-stars.svg);
   background-repeat: repeat;
   color: var(--white);
   font-family: var(--spartan);

@@ -4,7 +4,8 @@ import { Button } from "../Button/Button";
 import { PlanetDescriptionButtons } from "../PlanetDescriptionButtons/PlanetDescriptionButtons";
 
 export const Navbar = () => {
-  const { planetData, setPlanetToDisplay } = usePlanetContext();
+  const { planetData, setPlanetToDisplay, setDataToDisplay } =
+    usePlanetContext();
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 376);
   const [isMenuDisplayed, setIsMenuDisplayed] = useState(false);
 
@@ -31,8 +32,6 @@ export const Navbar = () => {
     "neptune",
   ];
 
-  console.log(isMobile);
-
   const handleClick = (num) => {
     setPlanetToDisplay(num);
     document.documentElement.dataset.theme = planetArray[num];
@@ -41,6 +40,15 @@ export const Navbar = () => {
   const handleMenuClick = () => {
     setTimeout(() => {
       setIsMenuDisplayed(!isMenuDisplayed);
+    }, 50);
+  };
+
+  const handleMobileClick = (num) => {
+    setTimeout(() => {
+      setIsMenuDisplayed(!isMenuDisplayed);
+      setPlanetToDisplay(num);
+      setDataToDisplay("overview");
+      document.documentElement.dataset.theme = planetArray[num];
     }, 50);
   };
 
@@ -73,7 +81,7 @@ export const Navbar = () => {
           ? planetData.map((e, index) => (
               <Button
                 key={index}
-                onclick={() => handleClick(index)}
+                onclick={() => handleMobileClick(index)}
                 index={index}
                 className={"mobile-navbar-button upper-case"}
               >
